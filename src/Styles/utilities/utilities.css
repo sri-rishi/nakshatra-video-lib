@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;600;700&display=swap');
+
+.poppins-font {
+    font-family: 'Poppins', sans-serif;
+}
+.m-1 {
+    margin: 1rem;
+}
+
+.mr-1 {
+    margin-right: 1rem;
+}
+
+.ml-1 {
+    margin-left: 1rem;
+}
+.m-vl-1 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.mr-8-px {
+    margin-right: 8px;
+}
+
+.m-hr-1 {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.mt-8-px {
+    margin-top: 8px; 
+}
+
+.mt-3-px {
+    margin-top: 3px;
+}
+
+.mt-1 {
+    margin-top: 1rem;
+}
+
+.mb-1 {
+    margin-bottom: 1rem;
+}
+
+.btn-border-none {
+    border: none;
+    outline: transparent;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-evenly {
+    justify-content: space-evenly;
+}
+
+.align-flex-end {
+    align-items: flex-end;
+}
+
+.card-shadow {
+    box-shadow: 0 1px 10px var(--light-gray-color);
+}
+
+.form-cta {
+    width: 100%;
+}
+
+.icon-vr-align {
+    vertical-align: middle;
+}
+
+.cursor-pointer:hover {
+    cursor: pointer;
+}
+
+.orange-text {
+    color: var(--dark-yellow-color);
+}
+
+.primary-color-text {
+    color: var(--primary-dark-color);
+}
+
+.gap-8-px {
+    gap: 8px;
+}
+
+.empty-box {
+    width: 100vw;
+    height: 100vh;
+    margin-top: 3rem;
+}
+
+.empty-box-image {
+    width: 50%;
+}

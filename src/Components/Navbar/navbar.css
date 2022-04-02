@@ -1,0 +1,86 @@
+.navbar-box {
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+    height: fit-content;
+    padding: 1rem 2rem;
+}
+
+.hamburger {
+    margin: 0 1rem 0 0;
+    color: var(--primary-color);
+    font-size: 2rem;
+}
+
+.nav-cta-icon {
+    position: relative;
+    font-size: 1.5rem;
+    color: var(--partial-black-color);
+}
+
+.nav-cta-icon:hover {
+    color: var(--secondary-color);
+}
+
+.nav-section {
+    width: 30%;
+}
+
+.number-sm-badge {
+    top: -4px;
+}
+
+.search-div {
+    padding: 0 8px;
+    position: relative;
+}
+
+.input-search {
+    padding: 8px;
+    width: 100%;
+}
+
+.nav-search-btn {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+}
+
+@media only screen and (max-width: 70em) {
+    .input-search {
+        display: inline;
+    } 
+    .search-div {
+        background: var(--lighter-secondary-color); 
+    }
+} 
+
+@media only screen and (max-width: 62.5em) {
+    .navbar-box {
+        justify-content: space-between;
+    }
+
+    .md-screen-hidden {
+        display: none;
+    }
+
+    .hamburger {
+       display: inline; 
+    }
+
+    .nav-section {
+        justify-content: flex-end;
+    }
+
+    .title-section {
+        width: 65%;
+        justify-content: flex-start;
+    }
+}
+
+@media only screen and (max-width: 54em) {
+    .number-sm-badge {
+        top: -2px;
+        right: -10px;
+    }
+}
