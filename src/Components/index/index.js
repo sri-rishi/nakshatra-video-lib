@@ -1,7 +1,7 @@
 import { Navbar } from '../Navbar/Navbar';
-import { Footer } from '../Footer/Footer';
 import { Button } from '../Buttons/Button';
 import { EmptyPage } from '../EmptyPage/EmptyPage';
+import { VideoCard } from '../VideoCard/VideoCard';
 
 
-export {Navbar, Footer, Button, EmptyPage};
+export {Navbar, Button, EmptyPage, VideoCard};

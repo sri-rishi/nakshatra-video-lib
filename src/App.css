@@ -1,3 +1,9 @@
 @import "https://nakshatra-ui.netlify.app/lib/components.css";
 @import "./Styles/style_guid.css";
 @import "./Components/index/index.css";
+
+main {
+     font-family: 'Noto Sans', sans-serif;
+     margin: 8rem ;
+}
+

@@ -10,7 +10,7 @@ export const Navbar = () => {
                     <Button className="hamburger display-none btn-border-none bg-transparent" icon={<GiHamburgerMenu className="icon-vr-align"/>} />
                     <a href="#">
                         <div className="title font-weight-3">
-                            nakshatra <span className="sub-title">CLiQ</span>
+                            cliq <span className="sub-title">TUbE</span>
                         </div>
                     </a>
                 </div>
