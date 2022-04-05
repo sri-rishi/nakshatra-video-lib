@@ -7,7 +7,7 @@
 body {
     width: 100%;
     overflow-x: hidden;
-    background: var(--whitesmoke-color);
+    background: var(--white-color);
 }
 
 
@@ -16,7 +16,7 @@ body {
     --secondary-color: rgb(32, 30, 30);
     --normal-text-color: rgb(80, 76, 76);
     --dark-gray-color: rgb(49, 48, 48);
-    --hover-background-color: rgba(44, 167, 224, 0.315);
+    --hover-background-color: rgba(44, 167, 224, 0.679);
     --light-gray-color: rgb(161, 148, 148);
     --dark-red-color: #dc3545;
     --light-red-color: #fcc5c5;
@@ -40,6 +40,7 @@ body {
     --darker-gray-color: rgb(27, 26, 26);
     --light-green-color: #208638;
     --lightest-gray-color: rgba(224,224,224,0.5);
+    --lightest-secondary-color: rgba(32, 30, 30, 0.779);
 }
 
 @media only screen and (max-width: 54em) {

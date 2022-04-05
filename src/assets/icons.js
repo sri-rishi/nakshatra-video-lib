@@ -1,9 +1,10 @@
 import {FaUserCircle, FaSearch} from "react-icons/fa";
-import {GoSearch} from "react-icons/go";
 import {GiHamburgerMenu} from "react-icons/gi";
-import {BsCodeSlash, BsGithub, BsTwitter} from "react-icons/bs";
+import { BsThreeDotsVertical} from "react-icons/bs";
 import {ImLinkedin} from "react-icons/im";
-import {SiMaildotru} from "react-icons/si";
+import {MdPlaylistAdd, MdOutlineWatchLater, MdPlaylistPlay} from "react-icons/md";
+import {RiHistoryFill} from "react-icons/ri";
+import {AiOutlineHome, AiOutlineLike} from "react-icons/ai"
 
 
-export {FaUserCircle, GoSearch, GiHamburgerMenu, FaSearch, BsCodeSlash, BsGithub, ImLinkedin, BsTwitter, SiMaildotru};
+export {FaUserCircle, GiHamburgerMenu, FaSearch, ImLinkedin, BsThreeDotsVertical, MdPlaylistAdd, MdOutlineWatchLater, RiHistoryFill, AiOutlineHome, AiOutlineLike, MdPlaylistPlay};
