@@ -4,6 +4,7 @@
     box-shadow: 0 1px 2px var(--light-gray-color);
     background: var(--white-color);
     color: var(--secondary-color);
+    position: relative;
 }
 
 .thumb-div {
@@ -19,6 +20,57 @@
 }
 
 .thumbnail-head{
-    
     font-size: 1.2rem;
+}
+
+.video-card-cta-btn {
+    background: rgba(255, 255, 255, 0.945);
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border-radius: 50%;
+    width: 2.3rem;
+    height: 2.3rem;
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+}
+
+.video-card-cta-btn:hover {
+    background: var(--lightest-secondary-color);
+    color: var(--white-color)
+}
+
+.video-card-cta-box {
+    position: absolute;
+    top: 2.1rem;
+    right: 2.1rem;
+    background-color: var(--white-color);
+}
+
+.video-cta-list-item {
+    padding: 8px;
+    color: var(--gray-color);
+}
+
+.video-cta-list-item:hover {
+    background: var(--light-gray-color);
+}
+
+.mb-3-px {
+    margin-bottom: 3px;
+}
+
+.cta-icon {
+    font-size: 1.3rem;
+}
+
+.video-cta-btn {
+    color: var(--gray-color);
+}
+
+.point-div {
+    width: 5px; 
+    height: 5px;
+    border-radius: 50%;
+    background: var(--secondary-color);
 }
