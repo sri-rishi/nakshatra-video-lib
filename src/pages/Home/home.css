@@ -11,6 +11,23 @@
 
 main {
     font-family: 'Noto Sans', sans-serif;
-    margin: 8rem 2rem;
+    margin: 2rem 0;
+    padding: 0 2rem;
     grid-area: main;
+}
+
+.videoCard-box {
+    row-gap: 3rem;
+}
+
+.tab-chips {
+    font-size: 1.1rem;
+    background: var(--lighter-secondary-color);
+    padding: 7px 14px;
+    width: min-content;
+    border-radius: 1.4rem;
+}
+
+.tab-chips:hover {
+    background: var(--lightest-gray-color);
 }

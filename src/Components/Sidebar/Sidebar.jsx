@@ -3,7 +3,7 @@ import { AiOutlineHome, AiOutlineLike, MdOutlineWatchLater, MdPlaylistPlay, RiHi
 export const Sidebar = () => {
     return (
         <aside className="aside-box">
-            <ul className="aside-items-box flex-column ">
+            <ul className="aside-items-box flex-column gap-1">
                 <li className="aside-items flex-row gap-1">
                     <AiOutlineHome className="icon-vr-align mt-4-px"/> 
                     <span className="noto-fonts">Home</span>
