@@ -4,6 +4,7 @@
     z-index: 9999;
     height: fit-content;
     padding: 1rem 2rem;
+    grid-area: navbar;
 }
 
 .hamburger {

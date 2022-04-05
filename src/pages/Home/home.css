@@ -1,0 +1,16 @@
+.home-body {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: 
+         "navbar navbar navbar"
+         "aside main main";
+    grid-template-rows: 5rem 1fr;
+    grid-template-columns: 18rem 1fr;
+}
+
+main {
+    font-family: 'Noto Sans', sans-serif;
+    margin: 8rem 2rem;
+    grid-area: main;
+}

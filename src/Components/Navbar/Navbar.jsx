@@ -1,4 +1,4 @@
-import { GiHamburgerMenu} from "../../assets/icons";
+import { GiHamburgerMenu } from "../../assets";
 import { Button } from "../index";
 import { SearchBar } from "./SearchBar";
 
@@ -21,7 +21,7 @@ export const Navbar = () => {
                     <a href="#">
                     <Button 
                         text="Login"
-                        className={`btn btn-primary mr-1 md-screen-hidden`} 
+                        className={`btn btn-primary`} 
                     />
                     </a>
                 </div>         
