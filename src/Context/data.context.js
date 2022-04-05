@@ -4,10 +4,23 @@ const DataContext =  createContext();
 
 const DataProvider = ({children}) => {
     const [videosList, setVideosList] = useState([]);
+    const [categoryList, setCategoryList] = useState([]);
 
     useEffect(() => {
         getData(setVideosList);
-    }, [])
+        getCategoryData(setCategoryList);
+    }, []);
+
+    const getCategoryData = async(setCategoryList) => {
+        try{
+            const response = await axios.get("/api/categories");
+            if(response?.data?.categories){
+                setCategoryList(response?.data?.categories)
+            }
+        }catch(error) {
+            console.error(error)
+        }
+    }
     const getData = async(setVideosList) => {
         try{
             const response = await axios.get("/api/videos");
@@ -19,7 +32,7 @@ const DataProvider = ({children}) => {
         }
     }
     return (
-        <DataContext.Provider value={{videosList}}>
+        <DataContext.Provider value={{videosList, categoryList}}>
             {children}
         </DataContext.Provider>
     )
