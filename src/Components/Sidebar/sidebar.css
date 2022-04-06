@@ -1,0 +1,21 @@
+.aside-box {
+    grid-area: aside;
+    top: 4.72rem;
+    left: 0;
+    bottom: 0;
+    padding: 2rem;
+    overflow: hidden;
+    background: var(--white-color);
+    box-shadow: 0 0 4px 2px var(--light-gray-color);
+}
+
+.aside-items {
+    padding: 1rem;
+    font-size: 1.2rem;
+}
+
+.aside-items:hover {
+    background: var(--primary-color);
+    color: var(--white-color);
+    cursor: pointer;
+}
