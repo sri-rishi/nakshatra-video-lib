@@ -26,10 +26,10 @@ export const SignUp = () => {
 
     const disableButton = () => {
         return (
-        userDetails.firstName !== "" &&
-        userDetails.secondName !== "" &&
-        validateEmail &&
-        validatePassword
+        userDetails.firstName === "" &&
+        userDetails.secondName === "" &&
+        !validateEmail &&
+        !validatePassword
         )
     }
 
