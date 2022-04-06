@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { DataProvider } from "./Context/data.context";
+import { FilterProvider } from "./Context/filter.context";
 
 // Call make Server
 makeServer();
@@ -11,7 +12,9 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <DataProvider>
-      <App />
+      <FilterProvider>
+        <App />
+      </FilterProvider>
     </DataProvider>
   </React.StrictMode>,
   document.getElementById("root")

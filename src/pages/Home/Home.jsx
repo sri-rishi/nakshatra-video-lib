@@ -1,24 +1,18 @@
-import { Button, Navbar, Sidebar, VideoCard } from "../../Components/index"
-import { useData } from "../../Context/data.context";
+import { Navbar, Sidebar, VideoCard } from "../../Components/index"
+import { useFilter } from "../../Context";
+import { TabButtonChips } from "./tabsButtonChips";
 
 export const Home = () => {
-    const {videosList, categoryList} = useData();
+    const {filteredVideoList} = useFilter();
     return (
         <div className="home-body">
             <Navbar />
             <Sidebar />
             <main className="main-box flex-column gap-2">
-                <div className="chips-box flex-row justify-evenly">
-                    {
-                        categoryList.map(({_id, categoryName}) => (
-                            <Button key={_id} className="btn-border-none tab-chips"  text={categoryName}/>
-                        ))
-                    }
-               
-                </div>
+                <TabButtonChips />
                 <div className="videoCard-box flex-row align-center justify-evenly gap-2">
                 {
-                    videosList.map((videoDetails) => (
+                    filteredVideoList.map((videoDetails) => (
                         <VideoCard key={videoDetails._id} videoDetails={videoDetails}/>
                     ))
                 }
