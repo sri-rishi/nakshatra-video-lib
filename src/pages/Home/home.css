@@ -28,6 +28,10 @@ main {
     border-radius: 1.4rem;
 }
 
+.all-tab-chip {
+    padding: 7px 20px;
+}
+
 .tab-chips:hover {
     background: var(--lightest-gray-color);
 }
