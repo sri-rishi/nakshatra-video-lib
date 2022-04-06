@@ -1,0 +1,11 @@
+.signUp-main {
+    margin: 2rem auto;
+}
+
+.signUp-form {
+    background: var(--white-color);
+}
+
+.login-p:hover {
+    color: var(--primary-dark-color)
+}
