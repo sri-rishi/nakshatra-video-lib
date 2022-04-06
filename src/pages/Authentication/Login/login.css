@@ -1,0 +1,11 @@
+.login-main {
+    margin-top: 10rem;
+}
+
+.login-form {
+    background: var(--white-color);
+}
+
+.login-p:hover {
+    color: var(--primary-dark-color)
+}
