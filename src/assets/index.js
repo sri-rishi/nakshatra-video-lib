@@ -1,4 +1,4 @@
-import {FaUserCircle, GiHamburgerMenu, FaSearch, BsThreeDotsVertical, MdPlaylistAdd, MdOutlineWatchLater, RiHistoryFill, AiOutlineHome, AiOutlineLike, MdPlaylistPlay} from "./icons";
+import {FaUserCircle, GiHamburgerMenu, FaSearch, BsThreeDotsVertical, MdPlaylistAdd, MdOutlineWatchLater, RiHistoryFill, AiOutlineHome, AiOutlineLike, MdPlaylistPlay, AiFillLike} from "./icons";
 
 
-export {FaUserCircle, GiHamburgerMenu, FaSearch, BsThreeDotsVertical, MdPlaylistAdd, MdOutlineWatchLater, RiHistoryFill, AiOutlineHome, AiOutlineLike, MdPlaylistPlay};
+export {FaUserCircle, GiHamburgerMenu, FaSearch, BsThreeDotsVertical, MdPlaylistAdd, MdOutlineWatchLater, RiHistoryFill, AiOutlineHome, AiOutlineLike, MdPlaylistPlay, AiFillLike};
