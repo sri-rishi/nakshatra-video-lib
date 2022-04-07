@@ -35,5 +35,17 @@ const loginHandler = async (userInput, authDispatch, navigate) => {
     }
 }; 
 
-export {loginHandler, signInHandler};
+const postVideoToWatchLater = async(video, serviceDispatch) => {
+  const token = localStorage.getItem("token"); 
+  try {
+      const response = await axios.post("/api/user/watchlater", {video}, {headers:{authorization: token}});
+      if(response.status === 201 || response.status === 200) {
+          serviceDispatch({type: "SET_WATCHLATER_LIST", payload: response.data.watchlater})
+      }
+  } catch(error) {
+      console.error(error);
+  } 
+}
+
+export {loginHandler, signInHandler, postVideoToWatchLater};
 

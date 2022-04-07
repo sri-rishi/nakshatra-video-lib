@@ -78,3 +78,7 @@
     border-radius: 50%;
     background: var(--secondary-color);
 }
+
+.like-btn {
+    font-size: 1.2rem;
+}
