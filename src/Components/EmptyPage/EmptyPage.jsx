@@ -8,9 +8,9 @@ export const EmptyPage = ({imageSrc, altText, pageName}) => {
                 <div className="empty-box-image">
                     <img className="img-responsive" src={imageSrc ? imageSrc : ""} alt={altText ? altText : ""} />
                 </div>
-                <p className="xsm-heading">No items in {pageName ? pageName : ""}</p>
+                <p className="xsm-heading">No videos in {pageName ? pageName : ""}</p>
                 <Link to="/">
-                    <Button className="btn btn-primary" text="Shop Now"/>
+                    <Button className="btn btn-primary" text="Start Adding"/>
                 </Link>
             </div>
         </div>
