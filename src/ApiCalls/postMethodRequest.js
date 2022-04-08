@@ -35,5 +35,29 @@ const loginHandler = async (userInput, authDispatch, navigate) => {
     }
 }; 
 
-export {loginHandler, signInHandler};
+const postVideoToWatchLater = async(video, serviceListDispatch) => {
+  const token = localStorage.getItem("token"); 
+  try {
+    const response = await axios.post("/api/user/watchlater", {video}, {headers:{authorization: token}});
+    if(response.status === 201 || response.status === 200) {
+      serviceListDispatch({type: "SET_WATCHLATER_LIST", payload: response.data.watchlater})
+    }
+  } catch(error) {
+    console.error(error);
+  } 
+}
+
+const postVideoToLikedVideo = async(video, serviceListDispatch) => {
+  const token = localStorage.getItem("token");
+  try{
+    const response = await axios.post("/api/user/likes", {video}, {headers: {authorization: token}});
+    if(response.status === 201 || response.status === 200) {
+      serviceListDispatch({type: "SET_LIKED_VIDEO_LIST", payload: response.data.likes})
+    }
+  }catch(error) {
+    console.error(error)
+  }
+}
+
+export {loginHandler, signInHandler, postVideoToWatchLater, postVideoToLikedVideo};
 

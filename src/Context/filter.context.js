@@ -8,15 +8,15 @@ const FilterContext = createContext();
 const FilterProvider = ({children}) => {
     const {videosList} = useData();
 
-    const [state, dispatch] = useReducer(filterDataReducer, {categoryName: null, searchValue: ""});
+    const [state, dispatch] = useReducer(filterDataReducer, {categoryValue: null, searchValue: ""});
 
 
     const filteredBySearchData  = getFilteredBySearchData(videosList, state.searchValue);
     
-    const filteredVideoList = getFilteredData(filteredBySearchData, state.categoryName);
+    const filteredVideoList = getFilteredData(filteredBySearchData, state.categoryValue);
 
     return (
-        <FilterContext.Provider value={{filteredVideoList, filterDispatch: dispatch}}>
+        <FilterContext.Provider value={{filteredVideoList, filterDispatch: dispatch, categoryValue: state.categoryValue}}>
             {children}
         </FilterContext.Provider>
     )

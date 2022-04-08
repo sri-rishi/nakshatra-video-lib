@@ -5,9 +5,9 @@ const getFilteredBySearchData = (videoList, searchValue) => {
     return videoList
 }
 
-const getFilteredData = (videoList, categoryName) => {
-    if(categoryName) {
-        return videoList.filter(video => video.categoryName === categoryName)
+const getFilteredData = (videoList, categoryValue) => {
+    if(categoryValue) {
+        return videoList.filter(video => video.categoryName === categoryValue)
     }
     return videoList;
 }

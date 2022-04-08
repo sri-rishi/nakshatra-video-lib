@@ -5,7 +5,7 @@ import { TabButtonChips } from "./tabsButtonChips";
 export const Home = () => {
     const {filteredVideoList} = useFilter();
     return (
-        <div className="home-body">
+        <div className="body-template">
             <Navbar />
             <Sidebar />
             <main className="main-box flex-column gap-2">
