@@ -82,3 +82,7 @@
 .like-btn {
     font-size: 1.2rem;
 }
+
+.color-primary {
+    color: var(--primary-color);
+}

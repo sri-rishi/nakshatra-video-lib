@@ -1,5 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700&display=swap');
 
+.body-template {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-areas: 
+         "navbar navbar navbar"
+         "aside main main";
+    grid-template-rows: 5rem 1fr;
+    grid-template-columns: 18rem 1fr;
+}
+
+.main-box {
+    margin: 2rem 0;
+    padding: 0 2rem;
+    grid-area: main;
+}
+
+
 .noto-fonts {
     font-family: 'Noto Sans', sans-serif;
 }
@@ -91,9 +109,8 @@
 }
 
 .empty-box {
-    width: 100vw;
+    width: 75vw;
     height: 100vh;
-    margin-top: 3rem;
 }
 
 .empty-box-image {
