@@ -22,4 +22,28 @@ const getCategoryData = async(setCategoryList) => {
     }
 }
 
-export {getData, getCategoryData}
+const getDataFromWatchLater = async(serviceListDispatch) => {
+    const token = localStorage.getItem("token");
+    try {
+        const response = await axios.get("/api/user/watchlater", {headers: {authorization: token}});
+        if(response.status === 200 || response.status === 201){
+            serviceListDispatch({type: "SET_WATCHLATER_LIST", payload: response.data.watchlater})
+        }
+    }catch(error) {
+        console.error(error)
+    }
+}
+
+const getDataFromLikedVideo = async(serviceListDispatch) => {
+    const token = localStorage.getItem("token");
+    try {
+        const response = await axios.get("/api/user/likes", {headers: {authorization: token}});
+        if(response.status === 200 || response.status === 201) {
+            serviceListDispatch({type: "SET_LIKED_VIDEO_LIST", payload: response.data.likes});
+        }
+    }catch(error) {
+        console.error(error)
+    }
+}
+
+export {getData, getCategoryData, getDataFromWatchLater, getDataFromLikedVideo}
