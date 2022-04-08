@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import {Home, Login, PrivateRoute, SignUp, UserProfile} from "./pages/index"
+import {Home, LikedVideos, Login, PrivateRoute, SignUp, UserProfile, WatchLater} from "./pages/index"
 
 function App() {
   return (
@@ -11,6 +11,8 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/user" element={<PrivateRoute />}>
           <Route path="/user/user-profile" element={<UserProfile />} />
+          <Route path="/user/watchlater" element={<WatchLater />} />
+          <Route path="/user/likes" element={<LikedVideos />} />
         </Route>
       </Routes>
     </div>
