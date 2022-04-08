@@ -18,5 +18,4 @@
 .aside-items:hover {
     background: var(--primary-color);
     color: var(--white-color);
-    cursor: pointer;
 }
