@@ -1,5 +1,5 @@
-import {createContext, useReducer, useContext} from "react"; 
-import { postVideoToWatchLater } from "../ApiCalls";
+import {createContext, useReducer, useContext, useEffect} from "react";
+import { getDataFromWatchLater, getDataFromLikedVideo } from "../ApiCalls";
 
 const ServiceDataListContext = createContext(); 
 
@@ -11,17 +11,28 @@ const ServiceDataListProvider = ({children}) => {
                     ...state,
                     watchLaterList: action.payload
                 }
+            
+            case "SET_LIKED_VIDEO_LIST":
+                return {
+                    ...state,
+                    likedVideoList: action.payload
+                }
         } 
     }
 
-    const addToWatchLater = (video) => {
-        postVideoToWatchLater(video, dispatch);
-    }
+    useEffect(() => {
+        getDataFromWatchLater(dispatch);
+        getDataFromLikedVideo(dispatch)
+    }, [])
 
-    const [state, dispatch] = useReducer(serviceListReducer, {watchLaterList: [] })
+    const [state, dispatch] = useReducer(serviceListReducer, {watchLaterList: [], likedVideoList: [] })
 
     return (
-        <ServiceDataListContext.Provider value={{watchLaterList: state.watchLaterList, serviceListDispatch: dispatch, addToWatchLater}}>
+        <ServiceDataListContext.Provider value={{
+            watchLaterList: state.watchLaterList,
+            likedVideoList: state.likedVideoList, 
+            serviceListDispatch: dispatch, 
+            }}>
             {children}
         </ServiceDataListContext.Provider>
     )
