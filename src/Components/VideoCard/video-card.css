@@ -80,9 +80,10 @@
 }
 
 .like-btn {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    color: var(--gray-color)
 }
 
-.color-primary {
-    color: var(--primary-color);
+.color-dark-primary {
+    color: var(--primary-dark-color);
 }

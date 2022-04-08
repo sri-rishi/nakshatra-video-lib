@@ -89,7 +89,7 @@ export const VideoCard = (props) => {
                         {calculateView(views)} <span className="point-div mt-3-px"></span> 1 year ago
                     </p>
                     <Button 
-                        className={`${findItemInArray(_id, likedVideoList) && `color-primary`} btn-border-none bg-transparent like-btn`} 
+                        className={`${findItemInArray(_id, likedVideoList) && `color-dark-primary `} btn-border-none bg-transparent like-btn`} 
                         icon={<AiFillLike className="icon-vr-align"/>} 
                         onClick={() => moveToLikedVideos(_id, props.videoDetails)}
                     />

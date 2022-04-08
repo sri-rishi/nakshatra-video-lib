@@ -9,7 +9,7 @@ const filterDataReducer =  (state, action) => {
         case "FILTER_BY_CATEGORY": 
         return {
             ...state, 
-            categoryName: action.payload
+            categoryValue: action.payload
         }
 
         default:

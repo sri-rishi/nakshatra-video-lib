@@ -15,5 +15,11 @@
 }
 
 .tab-chips:hover {
-    background: var(--lightest-gray-color);
+    color: var(--white-color);
+    background: var(--secondary-color);
+}
+
+.active-tab-color {
+    color: var(--white-color);
+    background: var(--secondary-color);
 }
