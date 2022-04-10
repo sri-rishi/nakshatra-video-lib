@@ -4,6 +4,7 @@ import { AiFillLike, BsThreeDotsVertical, MdOutlineWatchLater, MdPlaylistAdd } f
 import { findItemInArray } from "../../Helper";
 import { useServiceData } from "../../Context";
 import { postVideoToWatchLater, deleteVideoFromWatchLater, postVideoToLikedVideo,  deleteVideoFromLikedVideo } from "../../ApiCalls";
+import { Link } from "react-router-dom";
 
 
 export const VideoCard = (props) => {
@@ -12,11 +13,11 @@ export const VideoCard = (props) => {
 
     const {
         _id,
-    title,
-    creator,
-    categoryName,
-    views,
-    postedBefore
+        title,
+        creator,
+        categoryName,
+        views,
+        postedBefore
     } = props.videoDetails;
 
     const addToWatchLater = (video) => {
@@ -45,18 +46,20 @@ export const VideoCard = (props) => {
         : Math.abs(Number(views));
     }
 
-    const moveToWatchLater = (id, video) => {
+    const watchLaterHandler = (id, video) => {
         findItemInArray(id, watchLaterList) ? removeFromWatchLater(id) : addToWatchLater(video)
     }
 
-    const moveToLikedVideos = (id, video) => {
+    const likedVideoHandler = (id, video) => {
         findItemInArray(id, likedVideoList) ? removeFromLikedVideo(id) : addToLikedVideos(video);
     }
 
     return (
         <div className="video-card">
             <div className="thumb-div">
-                <img className="img-responsive thumbnail" src={`https://i.ytimg.com/vi/${_id}/0.jpg`} alt="Thumbnail"/>
+                <Link to={`/video/${_id}`}>
+                    <img className="img-responsive thumbnail" src={`https://i.ytimg.com/vi/${_id}/0.jpg`} alt="Thumbnail"/>
+                </Link>
                 <Button 
                     className="video-card-cta-btn btn-border-none" 
                     icon={<BsThreeDotsVertical className="icon-vr-align"/>}
@@ -65,15 +68,15 @@ export const VideoCard = (props) => {
                 <ul className={`video-card-cta-box ${!showCtaBox ? "display-none": "flex-column"}`}>
                     <li className="video-cta-list-item cursor-pointer">
                         <Button 
-                            className={"btn-border-none bg-transparent flex-row align-center gap-8-px font-weight-6 video-cta-btn"} 
+                            className={"btn-border-none bg-transparent flex-row align-center gap-8-px font-weight-6 thumbnail-cta-btn"} 
                             icon={<MdOutlineWatchLater className="icon-vr-align mb-3-px cta-icon"/>} 
                             text={findItemInArray(_id, watchLaterList) ? "Remove from Watch Later" : "Add to Watch Later"}
-                            onClick={() => moveToWatchLater(_id, props.videoDetails)}
+                            onClick={() => watchLaterHandler(_id, props.videoDetails)}
                         />
                     </li>
                     <li className="video-cta-list-item cursor-pointer">
                         <Button 
-                            className={"btn-border-none bg-transparent flex-row align-center gap-8-px font-weight-6 video-cta-btn"} 
+                            className={"btn-border-none bg-transparent flex-row align-center gap-8-px font-weight-6 thumbnail-cta-btn"} 
                             icon={<MdPlaylistAdd className="icon-vr-align mb-3-px cta-icon"/>} 
                             text="Add to Playlist"
                         />
@@ -86,12 +89,12 @@ export const VideoCard = (props) => {
                 </p>
                 <div className="flex-row align-center justify-between">
                     <p className="flex-row align-center gap-8-px noto-fonts">
-                        {calculateView(views)} <span className="point-div mt-3-px"></span> 1 year ago
+                        {calculateView(views)} <span className="point-div mt-3-px"></span> {postedBefore}
                     </p>
                     <Button 
                         className={`${findItemInArray(_id, likedVideoList) && `color-dark-primary `} btn-border-none bg-transparent like-btn`} 
                         icon={<AiFillLike className="icon-vr-align"/>} 
-                        onClick={() => moveToLikedVideos(_id, props.videoDetails)}
+                        onClick={() => likedVideoHandler(_id, props.videoDetails)}
                     />
                 </div>
             </div>
