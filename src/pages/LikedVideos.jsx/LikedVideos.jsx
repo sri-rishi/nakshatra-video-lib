@@ -17,7 +17,7 @@ export const LikedVideos = () => {
                 {
                     likedVideoList.map((videoDetails) => (
                         <VideoCard key={videoDetails._id} videoDetails={videoDetails}/>
-                    ))
+                    )).reverse()
                 }
                 </div>
                 }
