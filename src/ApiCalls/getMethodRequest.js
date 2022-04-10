@@ -59,7 +59,7 @@ const getVideoById = async(videoId, setLoading, setVideo) => {
 }
 
 const getDataFromHistory = async(serviceListDispatch) => {
-    const token = localStorage.get("token");
+    const token = localStorage.getItem("token");
     try {
         const response = await axios.get("/api/user/history", {headers: {authorization: token}})
         if(response.status === 200 || response.status === 201) {
