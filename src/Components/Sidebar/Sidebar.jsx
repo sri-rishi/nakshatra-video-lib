@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AiOutlineHome, AiOutlineLike, MdOutlineWatchLater, MdPlaylistPlay, RiHistoryFill} from "../../assets";
 
 export const Sidebar = () => {
@@ -33,10 +33,12 @@ export const Sidebar = () => {
                         <span className="noto-fonts">Liked videos</span>
                     </li>
                 </NavLink>
-                <li className="aside-items flex-row gap-1">
-                    <RiHistoryFill className="icon-vr-align mt-4-px"/>
-                    <span className="noto-fonts">History</span>
-                </li>
+                <NavLink to="/user/history" style={getActiveStyle}>
+                    <li className="aside-items flex-row gap-1">
+                        <RiHistoryFill className="icon-vr-align mt-4-px"/>
+                        <span className="noto-fonts">History</span>
+                    </li>
+                </NavLink>
             </ul>
         </aside>
     )
