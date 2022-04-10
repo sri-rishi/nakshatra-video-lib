@@ -46,4 +46,28 @@ const getDataFromLikedVideo = async(serviceListDispatch) => {
     }
 }
 
-export {getData, getCategoryData, getDataFromWatchLater, getDataFromLikedVideo}
+const getVideoById = async(videoId, setLoading, setVideo) => {
+    try {
+        const response = await axios.get(`/api/video/${videoId}`);
+        if(response.status === 200 || response.status === 201) {
+            setLoading(false)
+            setVideo(response.data.video);
+        } 
+    }catch(error) {
+        console.error(error)
+    }
+}
+
+const getDataFromHistory = async(serviceListDispatch) => {
+    const token = localStorage.get("token");
+    try {
+        const response = await axios.get("/api/user/history", {headers: {authorization: token}})
+        if(response.status === 200 || response.status === 201) {
+            serviceListDispatch({type: "SET_HISTORY_VIDEO_LIST", payload: response.data.history})
+        }
+    }catch(error) {
+        console.error(error);
+    }
+}
+
+export {getData, getCategoryData, getDataFromWatchLater, getDataFromLikedVideo, getVideoById, getDataFromHistory}
