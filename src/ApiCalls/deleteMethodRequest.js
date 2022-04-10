@@ -24,5 +24,29 @@ const deleteVideoFromLikedVideo = async(id, serviceListDispatch) => {
     }
 }
 
+const deleteVideoFromHistory = async(id, serviceListDispatch) => {
+    const token = localStorage.getItem("token");
+    try {
+        const response = await axios.delete(`/api/user/history/${id}`, {headers: {authorization: token}});
+        if(response.status === 200 || response.status === 201) {
+            serviceListDispatch({type: "SET_HISTORY_VIDEO_LIST", payload: response.data.history})
+        }
+    }catch(error) {
+        console.error(error)
+    }
+}
 
-export {deleteVideoFromWatchLater, deleteVideoFromLikedVideo};
+const deleteAllVideoFromHistory = async(serviceListDispatch) => {
+    const token = localStorage.getItem("token");
+    try {
+        const response = await axios.delete("/api/user/history/all", {headers: {authorization: token}});
+        if(response.status === 200 || response.status === 201) {
+            serviceListDispatch({type: "SET_HISTORY_VIDEO_LIST", payload: response.data.history});
+        }
+    }catch(error) {
+        console.log(error)
+    }
+}
+
+
+export {deleteVideoFromWatchLater, deleteVideoFromLikedVideo, deleteVideoFromHistory, deleteAllVideoFromHistory};
