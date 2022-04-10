@@ -1,8 +1,7 @@
 .aside-box {
     grid-area: aside;
     top: 4.72rem;
-    left: 0;
-    bottom: 0;
+    position: sticky;
     min-height: 100vh;
     padding: 2rem;
     overflow: hidden;

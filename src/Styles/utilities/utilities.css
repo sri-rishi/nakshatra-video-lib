@@ -63,6 +63,10 @@
     margin-bottom: 1rem;
 }
 
+.mb-4-px {
+    margin-bottom: 4px;
+}
+
 .btn-border-none {
     border: none;
     outline: transparent;
