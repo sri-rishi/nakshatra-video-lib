@@ -1,5 +1,5 @@
 import {createContext, useReducer, useContext, useEffect} from "react";
-import { getDataFromWatchLater, getDataFromLikedVideo } from "../ApiCalls";
+import { getDataFromWatchLater, getDataFromLikedVideo, getDataFromHistory } from "../ApiCalls";
 
 const ServiceDataListContext = createContext(); 
 
@@ -17,20 +17,28 @@ const ServiceDataListProvider = ({children}) => {
                     ...state,
                     likedVideoList: action.payload
                 }
+
+            case "SET_HISTORY_VIDEO_LIST":
+                return {
+                    ...state,
+                    historyVideoList: action.payload
+                }
         } 
     }
 
     useEffect(() => {
         getDataFromWatchLater(dispatch);
-        getDataFromLikedVideo(dispatch)
+        getDataFromLikedVideo(dispatch);
+        getDataFromHistory(dispatch)
     }, [])
 
-    const [state, dispatch] = useReducer(serviceListReducer, {watchLaterList: [], likedVideoList: [] })
+    const [state, dispatch] = useReducer(serviceListReducer, {watchLaterList: [], likedVideoList: [], historyVideoList: [] })
 
     return (
         <ServiceDataListContext.Provider value={{
             watchLaterList: state.watchLaterList,
             likedVideoList: state.likedVideoList, 
+            historyVideoList: state.historyVideoList,
             serviceListDispatch: dispatch, 
             }}>
             {children}
