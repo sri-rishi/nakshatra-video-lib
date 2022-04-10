@@ -72,6 +72,10 @@
     color: var(--gray-color);
 }
 
+.color-red {
+    color: var(--red-color);
+}
+
 .point-div {
     width: 5px; 
     height: 5px;
