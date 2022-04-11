@@ -9,7 +9,7 @@ import { Link, useLocation } from "react-router-dom";
 
 export const VideoCard = (props) => {
     const [showCtaBox, setShowCtaBox] = useState(false);
-    const {watchLaterList, serviceListDispatch, likedVideoList, historyVideoList} = useServiceData();
+    const {watchLaterList, serviceListDispatch, likedVideoList, historyVideoList, setShowPlaylistModal} = useServiceData();
     const location = useLocation();
 
     const {
@@ -20,6 +20,10 @@ export const VideoCard = (props) => {
         views,
         postedBefore
     } = props.videoDetails;
+
+    const playlistHandler = () => {
+        setShowPlaylistModal(true)
+    }
 
     return (
         <div className="video-card">
@@ -46,6 +50,7 @@ export const VideoCard = (props) => {
                             className={"btn-border-none bg-transparent flex-row align-center gap-8-px font-weight-6 thumbnail-cta-btn"} 
                             icon={<MdPlaylistAdd className="icon-vr-align mb-3-px cta-icon"/>} 
                             text="Add to Playlist"
+                            onClick={() => playlistHandler()}
                         />
                     </li>
                     {
