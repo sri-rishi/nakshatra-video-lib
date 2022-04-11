@@ -59,5 +59,17 @@ const postVideoToLikedVideo = async(video, serviceListDispatch) => {
   }
 }
 
-export {loginHandler, signInHandler, postVideoToWatchLater, postVideoToLikedVideo};
+const postVideoToHistory = async(video, serviceListDispatch) => {
+  const token = localStorage.getItem("token");
+  try {
+      const response = await axios.post(`/api/user/history`,{video}, {headers: {authorization: token}})
+      if(response.status === 200 || response.status === 201) {
+          serviceListDispatch({type: "SET_HISTORY_VIDEO_LIST", payload: response.data.history})
+      }
+  }catch(error) {
+      console.log(error)
+  }
+}
+
+export {loginHandler, signInHandler, postVideoToWatchLater, postVideoToLikedVideo, postVideoToHistory};
 

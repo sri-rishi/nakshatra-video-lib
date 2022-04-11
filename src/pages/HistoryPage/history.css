@@ -1,0 +1,13 @@
+.clear-all-btn {
+    font-size: 1.2rem;
+    padding: 3px 8px;
+    background: var(--white-color);
+    box-shadow: 0 1px 2px var(--light-gray-color);
+    border-radius: 4px;
+    align-self: flex-end;
+}
+
+.clear-all-btn:hover {
+    background: var(--red-color);
+    color: var(--white-color);
+}

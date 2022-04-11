@@ -40,6 +40,7 @@ body {
     --darker-gray-color: rgb(27, 26, 26);
     --light-green-color: #208638;
     --lightest-gray-color: rgba(224,224,224,0.5);
+    --partial-gray-color: rgba(177, 177, 177, 0.5);
     --lightest-secondary-color: rgba(32, 30, 30, 0.779);
 }
 
