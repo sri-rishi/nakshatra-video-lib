@@ -1,9 +1,11 @@
-import {createContext, useReducer, useContext, useEffect} from "react";
+import {createContext, useReducer, useContext, useEffect, useState} from "react";
 import { getDataFromWatchLater, getDataFromLikedVideo, getDataFromHistory } from "../ApiCalls";
 
 const ServiceDataListContext = createContext(); 
 
 const ServiceDataListProvider = ({children}) => {
+    const [showPlaylistModal, setShowPlaylistModal] = useState(false);
+
     const serviceListReducer = (state, action) => {
         switch(action.type) {
             case "SET_WATCHLATER_LIST":
@@ -36,6 +38,8 @@ const ServiceDataListProvider = ({children}) => {
 
     return (
         <ServiceDataListContext.Provider value={{
+            showPlaylistModal,
+            setShowPlaylistModal,
             watchLaterList: state.watchLaterList,
             likedVideoList: state.likedVideoList, 
             historyVideoList: state.historyVideoList,
