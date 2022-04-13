@@ -2,10 +2,14 @@ import { Button } from "../../../Components/index/index";
 import { AiOutlinePlus,VscClose } from "../../../assets";
 import { useServiceData } from "../../../Context";
 import {useState} from "react";
+import { newPlaylistHandler } from "../../../Helper";
+
 
 export const PlaylistModal = () => {
     const [showCreateNewModal, setShowCreateNewModal] = useState(false);
-    const {showPlaylistModal, setShowPlaylistModal} = useServiceData();
+    const [newPlaylistName, setNewPlaylistName] = useState("")
+    const {showPlaylistModal, setShowPlaylistModal, serviceListDispatch, allPlaylistArray} = useServiceData();
+
     return(
         <div className={`playlist-modal-div ${showPlaylistModal ? "flex-row" : "display-none"}`}>
             <div className={`playlist-modal-item ${showCreateNewModal ? "display-none": ""}`}>
@@ -17,10 +21,18 @@ export const PlaylistModal = () => {
                         onClick={() => setShowPlaylistModal(false)} 
                     />
                 </div>
-                <div className="playlist-name-div">
-                    <input className="label-input" id="playlist-name" type="checkbox" />
-                    <label htmlFor="playlist-name">Playlist1</label>
-                </div>
+
+                {   
+                    allPlaylistArray
+                    &&
+                    allPlaylistArray.map(({_id,title}) => (
+                        <div key={_id} className="playlist-name-div">
+                            <input className="label-input" id="playlist-name" type="checkbox" />
+                            <label htmlFor="playlist-name">{title}</label>
+                        </div>
+                    ))
+                }
+
                 <div className="flex-row align-center justify-center modal-footer">
                     <Button 
                         className={"create-playlist-btn font-weight-5"}  
@@ -42,7 +54,12 @@ export const PlaylistModal = () => {
                     />
                 </div>
                 <div className="playlist-name-div">
-                    <input className="btn-border-none new-playlist-input" type="text" id="new-playlist-new"/>
+                    <input 
+                        className="btn-border-none new-playlist-input" 
+                        type="text" 
+                        value={newPlaylistName}
+                        onChange={(e) => setNewPlaylistName(e.target.value)}
+                        />
                 </div>
                 <div className="modal-footer flex-row align-center justify-flex-end gap-1">
                     <Button 
@@ -53,7 +70,7 @@ export const PlaylistModal = () => {
                     <Button 
                         className={"new-playlist-btn font-weight-5"} 
                         text="Save" 
-                        onClick={() => setShowCreateNewModal(false)}
+                        onClick={() => newPlaylistHandler(newPlaylistName, serviceListDispatch, allPlaylistArray, setShowCreateNewModal, setNewPlaylistName)}
                     />
                 </div>
             </div>
