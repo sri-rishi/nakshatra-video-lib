@@ -1,9 +1,8 @@
 import {useState} from "react";
 import { Button } from "../index";
 import { AiFillLike, BsThreeDotsVertical, MdOutlineWatchLater, MdPlaylistAdd, RiDeleteBin5Fill } from "../../assets";
-import { findItemInArray } from "../../Helper";
 import { useServiceData } from "../../Context";
-import {watchLaterHandler, likedVideoHandler, removeVideoFromHistory,  calculateView} from "../../Helper";
+import {watchLaterHandler, likedVideoHandler, removeVideoFromHistory, calculateView, findItemInArray} from "../../Helper";
 import { Link, useLocation } from "react-router-dom";
 
 
@@ -22,7 +21,7 @@ export const VideoCard = (props) => {
     } = props.videoDetails;
 
     const playlistHandler = () => {
-        setShowPlaylistModal(true)
+        setShowPlaylistModal(true);
     }
 
     return (
@@ -50,7 +49,7 @@ export const VideoCard = (props) => {
                             className={"btn-border-none bg-transparent flex-row align-center gap-8-px font-weight-6 thumbnail-cta-btn"} 
                             icon={<MdPlaylistAdd className="icon-vr-align mb-3-px cta-icon"/>} 
                             text="Add to Playlist"
-                            onClick={() => playlistHandler()}
+                            onClick={() => playlistHandler(serviceListDispatch)}
                         />
                     </li>
                     {
