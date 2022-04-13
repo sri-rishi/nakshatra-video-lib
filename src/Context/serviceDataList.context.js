@@ -1,5 +1,5 @@
 import {createContext, useReducer, useContext, useEffect, useState} from "react";
-import { getDataFromWatchLater, getDataFromLikedVideo, getDataFromHistory } from "../ApiCalls";
+import { getDataFromWatchLater, getDataFromLikedVideo, getDataFromHistory, getAllPlaylistArray } from "../ApiCalls";
 
 const ServiceDataListContext = createContext(); 
 
@@ -25,6 +25,12 @@ const ServiceDataListProvider = ({children}) => {
                     ...state,
                     historyVideoList: action.payload
                 }
+
+            case "SET_ALL_PLAYLIST_ARRAY":
+                return {
+                    ...state,
+                    allPlaylistArray : action.payload                    
+                }
         } 
     }
 
@@ -32,9 +38,11 @@ const ServiceDataListProvider = ({children}) => {
         getDataFromWatchLater(dispatch);
         getDataFromLikedVideo(dispatch);
         getDataFromHistory(dispatch)
+        getAllPlaylistArray(dispatch);
     }, [])
 
-    const [state, dispatch] = useReducer(serviceListReducer, {watchLaterList: [], likedVideoList: [], historyVideoList: [] })
+    const [state, dispatch] = useReducer(serviceListReducer, {watchLaterList: [], likedVideoList: [], historyVideoList: [], allPlaylistArray: []})
+
 
     return (
         <ServiceDataListContext.Provider value={{
@@ -43,6 +51,7 @@ const ServiceDataListProvider = ({children}) => {
             watchLaterList: state.watchLaterList,
             likedVideoList: state.likedVideoList, 
             historyVideoList: state.historyVideoList,
+            allPlaylistArray: state.allPlaylistArray,
             serviceListDispatch: dispatch, 
             }}>
             {children}

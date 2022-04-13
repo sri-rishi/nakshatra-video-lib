@@ -71,5 +71,18 @@ const postVideoToHistory = async(video, serviceListDispatch) => {
   }
 }
 
-export {loginHandler, signInHandler, postVideoToWatchLater, postVideoToLikedVideo, postVideoToHistory};
+
+const postPlaylist = async(newPlaylistName, serviceListDispatch) => {
+  const token = localStorage.getItem("token");
+  try {
+      const response = await axios.post("/api/user/playlists", {playlist: {title: newPlaylistName}}, {headers: {authorization: token}})
+      if(response.status === 200 || response.status === 201) {
+          serviceListDispatch({type: "SET_ALL_PLAYLIST_ARRAY", payload: response.data.playlists})
+      }
+  }catch(error) {
+      console.log(error)
+  }
+}
+
+export {loginHandler, signInHandler, postVideoToWatchLater, postVideoToLikedVideo, postVideoToHistory, postPlaylist};
 
