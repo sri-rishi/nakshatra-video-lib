@@ -16,12 +16,28 @@ export const PlaylistCard = (props) => {
     return (
         <div className="playlist-card video-card">
             <div className="thumb-div">
+            
                 <Link to={`/user/playlists/${playlistDetails?._id}`}>
-                    <img className="img-responsive thumbnail" src={` https://i.ytimg.com/vi/${coverImageId}/0.jpg`} alt="Thumbnail"/>
+                    {   
+                        !playlistDetails?.videos?.length
+                        ?
+                        <div className="empty-playlist-cover flex-row align-center justify-center font-weight-6">
+                            <p>{playlistDetails?.title} is empty</p>
+                        </div>
+                        :
+                        <img className="img-responsive thumbnail" src={` https://i.ytimg.com/vi/${coverImageId}/0.jpg`} alt="Thumbnail"/>
+                    }
+
+                    <div 
+                    className={`${playlistDetails?.videos?.length <= 0 ? `display-none`: `flex-row`} overlay-div align-center justify-center`}
+                    >
+                        <p className="flex-row align-center gap-8-px">
+                            <AiOutlinePlayCircle className="icon-vr-align mb-4-px"/>
+                            <span>{videosInPlaylist}+</span>
+                        </p>
+                    </div>
                 </Link>
-                <div className={`${playlistDetails?.videos?.length <= 0 ? `display-none`: `flex-row`} overlay-div align-center justify-center`}>
-                    <p className="flex-row align-center gap-8-px"><AiOutlinePlayCircle className="icon-vr-align mb-4-px"/><span>{videosInPlaylist}+</span></p>
-                </div>
+                
             </div>
             <div className="playlist-text flex-row justify-between align-center">
                 <p className="text-ellipsis-overflow thumbnail-head noto-fonts">
