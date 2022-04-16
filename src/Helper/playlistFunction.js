@@ -17,11 +17,16 @@ const removePlaylistHandler = (playlistId, serviceListDispatch) => {
 }
 
 const handlePlaylist = (playlistId, clickedPlaylistVideo, serviceListDispatch, isChecked) => {
-        return !isChecked ? 
-            postVideoInPlaylist(playlistId, clickedPlaylistVideo, serviceListDispatch)
-            : 
-            deleteVideoFromPlaylist(playlistId, clickedPlaylistVideo._id, serviceListDispatch)  
+    return !isChecked ? 
+        postVideoInPlaylist(playlistId, clickedPlaylistVideo, serviceListDispatch)
+        : 
+        deleteVideoFromPlaylist(playlistId, clickedPlaylistVideo._id, serviceListDispatch)  
+}
+
+const playlistModalHandler = (video, setShowPlaylistModal, setClickedPlaylistVideo) => {
+    setShowPlaylistModal(true);
+    setClickedPlaylistVideo(video);
 }
 
 
-export {newPlaylistHandler, removePlaylistHandler, handlePlaylist};
+export {newPlaylistHandler, removePlaylistHandler, handlePlaylist, playlistModalHandler};

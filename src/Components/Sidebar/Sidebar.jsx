@@ -23,7 +23,7 @@ export const Sidebar = () => {
                         <span className="noto-fonts">Watch Later</span>
                     </li>
                 </NavLink>
-                <NavLink to="/user/playlists">
+                <NavLink to="/user/playlists" style={getActiveStyle}>
                     <li className="aside-items flex-row gap-1">
                         <MdPlaylistPlay className="icon-vr-align mt-4-px"/>
                         <span className="noto-fonts">Playlists</span>
