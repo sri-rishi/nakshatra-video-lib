@@ -8,7 +8,7 @@ import { Link, useLocation } from "react-router-dom";
 
 export const VideoCard = (props) => {
     const [showCtaBox, setShowCtaBox] = useState(false);
-    const {watchLaterList, serviceListDispatch, likedVideoList, historyVideoList, setShowPlaylistModal} = useServiceData();
+    const {watchLaterList, serviceListDispatch, likedVideoList, historyVideoList, setShowPlaylistModal, setClickedPlaylistVideo} = useServiceData();
     const location = useLocation();
 
     const {
@@ -20,8 +20,9 @@ export const VideoCard = (props) => {
         postedBefore
     } = props.videoDetails;
 
-    const playlistHandler = () => {
+    const playlistHandler = (video) => {
         setShowPlaylistModal(true);
+        setClickedPlaylistVideo(video);
     }
 
     return (
@@ -39,7 +40,7 @@ export const VideoCard = (props) => {
                     <li className="video-cta-list-item cursor-pointer">
                         <Button 
                             className={"btn-border-none bg-transparent flex-row align-center gap-8-px font-weight-6 thumbnail-cta-btn"} 
-                            icon={<MdOutlineWatchLater className="icon-vr-align mb-3-px cta-icon"/>} 
+                            icon={<MdOutlineWatchLater className="icon-vr-align cta-icon"/>} 
                             text={findItemInArray(_id, watchLaterList) ? "Remove from Watch Later" : "Add to Watch Later"}
                             onClick={() => watchLaterHandler(_id, props.videoDetails, watchLaterList, serviceListDispatch)}
                         />
@@ -47,9 +48,9 @@ export const VideoCard = (props) => {
                     <li className="video-cta-list-item cursor-pointer">
                         <Button 
                             className={"btn-border-none bg-transparent flex-row align-center gap-8-px font-weight-6 thumbnail-cta-btn"} 
-                            icon={<MdPlaylistAdd className="icon-vr-align mb-3-px cta-icon"/>} 
+                            icon={<MdPlaylistAdd className="icon-vr-align cta-icon"/>} 
                             text="Add to Playlist"
-                            onClick={() => playlistHandler(serviceListDispatch)}
+                            onClick={() => playlistHandler(props.videoDetails)}
                         />
                     </li>
                     {
@@ -58,7 +59,7 @@ export const VideoCard = (props) => {
                         <li className="video-cta-list-item cursor-pointer">
                             <Button 
                                 className={"btn-border-none bg-transparent flex-row align-center gap-8-px font-weight-6 color-red"} 
-                                icon={<RiDeleteBin5Fill className="icon-vr-align mb-3-px cta-icon"/>}
+                                icon={<RiDeleteBin5Fill className="icon-vr-align mb-4-px cta-icon"/>}
                                 text="Remove from history" 
                                 onClick={() => removeVideoFromHistory(_id, serviceListDispatch)}
                             />
