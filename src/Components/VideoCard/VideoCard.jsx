@@ -2,13 +2,15 @@ import {useState} from "react";
 import { Button } from "../index";
 import { AiFillLike, BsThreeDotsVertical, MdOutlineWatchLater, MdPlaylistAdd, RiDeleteBin5Fill } from "../../assets";
 import { useServiceData } from "../../Context";
-import {watchLaterHandler, likedVideoHandler, removeVideoFromHistory, calculateView, findItemInArray} from "../../Helper";
-import { Link, useLocation } from "react-router-dom";
+import {watchLaterHandler, likedVideoHandler, removeVideoFromHistory, calculateView, findItemInArray, playlistModalHandler} from "../../Helper";
+import { Link, useLocation, useParams } from "react-router-dom";
+import { deleteVideoFromPlaylist } from "../../ApiCalls";
 
 
 export const VideoCard = (props) => {
     const [showCtaBox, setShowCtaBox] = useState(false);
-    const {watchLaterList, serviceListDispatch, likedVideoList, historyVideoList, setShowPlaylistModal, setClickedPlaylistVideo} = useServiceData();
+    const {watchLaterList, serviceListDispatch, likedVideoList, historyVideoList, setShowPlaylistModal, setClickedPlaylistVideo, clickedPlaylistVideo} = useServiceData();
+    const {playlistId} = useParams();
     const location = useLocation();
 
     const {
@@ -19,11 +21,6 @@ export const VideoCard = (props) => {
         views,
         postedBefore
     } = props.videoDetails;
-
-    const playlistHandler = (video) => {
-        setShowPlaylistModal(true);
-        setClickedPlaylistVideo(video);
-    }
 
     return (
         <div className="video-card">
@@ -49,8 +46,12 @@ export const VideoCard = (props) => {
                         <Button 
                             className={"btn-border-none bg-transparent flex-row align-center gap-8-px font-weight-6 thumbnail-cta-btn"} 
                             icon={<MdPlaylistAdd className="icon-vr-align cta-icon"/>} 
-                            text="Add to Playlist"
-                            onClick={() => playlistHandler(props.videoDetails)}
+                            text={`${location.pathname === `/user/playlists/${playlistId}`? "Remove From Playlist": "Add to playlist"}`}
+                            onClick={() => 
+                                location.pathname === `/user/playlists/${playlistId}` ? 
+                                deleteVideoFromPlaylist(playlistId, _id, serviceListDispatch) :
+                                playlistModalHandler(props.videoDetails, setShowPlaylistModal, setClickedPlaylistVideo)
+                            }
                         />
                     </li>
                     {
