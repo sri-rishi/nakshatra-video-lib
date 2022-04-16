@@ -9,3 +9,8 @@
 .login-p:hover {
     color: var(--primary-dark-color)
 }
+
+
+.bg-primary-dark {
+    background: var(--primary-dark-color);
+}

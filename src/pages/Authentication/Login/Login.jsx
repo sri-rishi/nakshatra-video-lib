@@ -63,7 +63,7 @@ export const Login = () => {
                 </div>
             
                 <Button className="form-cta btn btn-primary" onClick={(e) => signinHandler(e)} text="Login" disabled={!disableLoginButton()}/>
-                <Button className="form-cta btn btn-primary" onClick={(e) => testLoginHandler(e)} text="Login As Guest"/>
+                <Button className="form-cta btn bg-primary-dark" onClick={(e) => testLoginHandler(e)} text="Login As Guest"/>
                 <Link to="/signup">
                     <Button className="form-cta btn btn-outline-primary" text="Create New Account" />
                 </Link>
