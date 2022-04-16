@@ -1,6 +1,5 @@
-import { Navbar, Sidebar, VideoCard } from "../../Components/index"
+import { Navbar, Sidebar, VideoCard, PlaylistModal} from "../../Components/index"
 import { useFilter } from "../../Context";
-import { PlaylistModal } from "./PlaylistModal/PlaylistModal";
 import { TabButtonChips } from "./TabsButtonChips";
 
 export const Home = () => {
