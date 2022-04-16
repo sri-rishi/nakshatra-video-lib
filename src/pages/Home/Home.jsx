@@ -1,6 +1,6 @@
 import { Navbar, Sidebar, VideoCard, PlaylistModal} from "../../Components/index"
 import { useFilter } from "../../Context";
-import { TabButtonChips } from "./TabsButtonChips";
+import { TabButtonChips } from "./tabsButtonChips";
 
 export const Home = () => {
     const {filteredVideoList} = useFilter();
