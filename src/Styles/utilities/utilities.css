@@ -127,3 +127,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+@media only screen and (max-width: 47em){
+    .body-template {
+        grid-template-areas: 
+         "navbar navbar navbar"
+         "main main main";
+    }
+}
