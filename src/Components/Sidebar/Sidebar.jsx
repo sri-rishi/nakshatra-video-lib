@@ -23,10 +23,12 @@ export const Sidebar = () => {
                         <span className="noto-fonts">Watch Later</span>
                     </li>
                 </NavLink>
-                <li className="aside-items flex-row gap-1">
-                    <MdPlaylistPlay className="icon-vr-align mt-4-px"/>
-                    <span className="noto-fonts">Playlists</span>
-                </li>
+                <NavLink to="/user/playlists">
+                    <li className="aside-items flex-row gap-1">
+                        <MdPlaylistPlay className="icon-vr-align mt-4-px"/>
+                        <span className="noto-fonts">Playlists</span>
+                    </li>
+                </NavLink>
                 <NavLink to="/user/likes" style={getActiveStyle}>
                     <li className="aside-items flex-row gap-1">
                         <AiOutlineLike className="icon-vr-align mt-4-px"/>
