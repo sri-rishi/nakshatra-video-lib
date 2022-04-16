@@ -11,7 +11,7 @@ export const WatchLater = () => {
             <main className="main-box flex-column gap-2">
                 {
                     !watchLaterList.length ?
-                    <EmptyPage imageSrc="https://ouch-cdn2.icons8.com/kS2IVLNNdtB_QvvEDXFvAg0wuKOrkGiXx3QRlnPszn8/rs:fit:1368:912/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvMy82/YTk5NTJiMi1mNWVh/LTRkNDAtYjZlMi1h/ZGQzODUwYTIwMjUu/c3Zn.png" alt="Empty Watchlater" pageName="Watch Later"/>
+                    <EmptyPage imageSrc="https://img.freepik.com/free-vector/happy-girl-wearing-headphones-enjoying-playlist-listening-music-mobile-phone-singing-songs_74855-14053.jpg?w=2000" alt="Empty Watchlater" pageText="There is nothing to watch"/>
                     :
                     <div className="videoCard-box flex-row align-center justify-evenly gap-2">
                 {

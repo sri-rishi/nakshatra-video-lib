@@ -16,9 +16,9 @@ export const Playlist = () => {
                 {
                     !allPlaylistArray.length ?
                     <EmptyPage 
-                        imageSrc="https://ouch-cdn2.icons8.com/kS2IVLNNdtB_QvvEDXFvAg0wuKOrkGiXx3QRlnPszn8/rs:fit:1368:912/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9zdmcvMy82/YTk5NTJiMi1mNWVh/LTRkNDAtYjZlMi1h/ZGQzODUwYTIwMjUu/c3Zn.png" 
-                        alt="Empty Watchlater" 
-                        pageName="History"
+                        imageSrc="https://img.freepik.com/free-vector/happy-girl-wearing-headphones-enjoying-playlist-listening-music-mobile-phone-singing-songs_74855-14053.jpg?w=2000" 
+                        alt="Empty Playlist" 
+                        pageText="You have't created any playlist"
                     />
                     :
                     <div className="videoCard-box flex-row align-center justify-evenly gap-2">  
