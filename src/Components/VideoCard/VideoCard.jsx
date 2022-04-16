@@ -12,6 +12,7 @@ export const VideoCard = (props) => {
     const {watchLaterList, serviceListDispatch, likedVideoList, historyVideoList, setShowPlaylistModal, setClickedPlaylistVideo, clickedPlaylistVideo} = useServiceData();
     const {playlistId} = useParams();
     const location = useLocation();
+    const singlePlaylistPagePath = location.pathname === `/user/playlists/${playlistId}`;
 
     const {
         _id,
@@ -21,6 +22,12 @@ export const VideoCard = (props) => {
         views,
         postedBefore
     } = props.videoDetails;
+
+    const playlistHandlerByPage = () => {
+        return singlePlaylistPagePath ? 
+        deleteVideoFromPlaylist(playlistId, _id, serviceListDispatch) :
+        playlistModalHandler(props.videoDetails, setShowPlaylistModal, setClickedPlaylistVideo)
+    }
 
     return (
         <div className="video-card">
@@ -44,14 +51,10 @@ export const VideoCard = (props) => {
                     </li>
                     <li className="video-cta-list-item cursor-pointer">
                         <Button 
-                            className={"btn-border-none bg-transparent flex-row align-center gap-8-px font-weight-6 thumbnail-cta-btn"} 
-                            icon={<MdPlaylistAdd className="icon-vr-align cta-icon"/>} 
-                            text={`${location.pathname === `/user/playlists/${playlistId}`? "Remove From Playlist": "Add to playlist"}`}
-                            onClick={() => 
-                                location.pathname === `/user/playlists/${playlistId}` ? 
-                                deleteVideoFromPlaylist(playlistId, _id, serviceListDispatch) :
-                                playlistModalHandler(props.videoDetails, setShowPlaylistModal, setClickedPlaylistVideo)
-                            }
+                            className={`btn-border-none bg-transparent flex-row align-center gap-8-px font-weight-6 thumbnail-cta-btn ${singlePlaylistPagePath && "color-red"}`} 
+                            icon={singlePlaylistPagePath ? <RiDeleteBin5Fill className="icon-vr-align cta-icon mb-4-px"/> :<MdPlaylistAdd className="icon-vr-align cta-icon"/>} 
+                            text={singlePlaylistPagePath ? "Remove From Playlist": "Add to playlist"}
+                            onClick={() => playlistHandlerByPage()}
                         />
                     </li>
                     {

@@ -10,7 +10,7 @@ export const SinglePlaylist = () => {
 
     useEffect(() => {
         getPlaylistFromPlaylists (playlistId, setPlaylistVideos, setLoader);
-    }, [playlistId]);
+    }, [playlistVideos]);
 
     if(loader) {
         return <h1>Loading ....</h1>

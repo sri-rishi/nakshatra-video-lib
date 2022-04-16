@@ -29,7 +29,7 @@ export const PlaylistCard = (props) => {
                     }
 
                     <div 
-                    className={`${playlistDetails?.videos?.length <= 0 ? `display-none`: `flex-row`} overlay-div align-center justify-center`}
+                        className={`${playlistDetails?.videos?.length <= 0 ? `display-none`: `flex-row`} overlay-div align-center justify-center`}
                     >
                         <p className="flex-row align-center gap-8-px">
                             <AiOutlinePlayCircle className="icon-vr-align mb-4-px"/>
