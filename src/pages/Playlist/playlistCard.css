@@ -34,7 +34,6 @@
     background: var(--lightest-secondary-color);
     position: absolute;
     width: 40%;
-    height: inherit;
     top: 0;
     right: 0;
     color: var(--whitesmoke-color);
