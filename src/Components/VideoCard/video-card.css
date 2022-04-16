@@ -28,7 +28,7 @@
 }
 
 .video-card-cta-btn {
-    background: rgba(255, 255, 255, 0.945);
+    background: var(--lighter-white-color);
     position: absolute;
     top: 5px;
     right: 5px;
