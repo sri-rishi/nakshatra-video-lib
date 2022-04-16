@@ -35,6 +35,22 @@ const loginHandler = async (userInput, authDispatch, navigate) => {
     }
 }; 
 
+const postTestLoginUser = async(authDispatch, navigate) => {
+  try {
+    const response = await axios.post("/api/auth/login", {
+      email: "adminforever@gmail.com",
+      password: "admin123"
+    })
+    if(response.status === 200 || response.status === 201) {
+      authDispatch({type: "LOGIN", payload: response.data.foundUser})
+    }
+    localStorage.setItem("token", response.data.encodedToken);
+    navigate("/")
+  }catch(error) {
+    console.error(error)
+  }
+}
+
 const postVideoToWatchLater = async(video, serviceListDispatch) => {
   const token = localStorage.getItem("token"); 
   try {
@@ -97,5 +113,5 @@ const postVideoInPlaylist = async(playlistId, video, serviceListDispatch) => {
   }
 }
 
-export {loginHandler, signInHandler, postVideoToWatchLater, postVideoToLikedVideo, postVideoToHistory, postPlaylist, postVideoInPlaylist};
+export {loginHandler, signInHandler, postVideoToWatchLater, postVideoToLikedVideo, postVideoToHistory, postPlaylist, postVideoInPlaylist, postTestLoginUser};
 
