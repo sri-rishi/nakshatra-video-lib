@@ -48,5 +48,28 @@ const deleteAllVideoFromHistory = async(serviceListDispatch) => {
     }
 }
 
+const deletePlaylistFromPlaylists = async(playlistId, serviceListDispatch) => {
+    const token = localStorage.getItem("token");
+    try{
+        const response = await axios.delete(`/api/user/playlists/${playlistId}`, {headers: {authorization: token}});
+        if(response.status === 200 || response.status === 201) {
+            serviceListDispatch({type: "SET_ALL_PLAYLIST_ARRAY", payload: response.data.playlists})
+        }
+    }catch(error) {
+        console.error(error);
+    }
+}
 
-export {deleteVideoFromWatchLater, deleteVideoFromLikedVideo, deleteVideoFromHistory, deleteAllVideoFromHistory};
+const deleteVideoFromPlaylist = async(playlistId, clickedPlaylistVideoId, serviceListDispatch) => {
+    const token = localStorage.getItem("token");
+    try {
+        const response = await axios.delete(`/api/user/playlists/${playlistId}/${clickedPlaylistVideoId}`, {headers: {authorization: token}});
+        if(response.status === 200 || response.status === 201) {
+            serviceListDispatch({type: "SET_VIDEO_IN_PLAYLIST", payload: response.data.playlist});
+        }
+    }catch(error){
+        console.error(error)
+    }
+}
+
+export {deleteVideoFromWatchLater, deleteVideoFromLikedVideo, deleteVideoFromHistory, deleteAllVideoFromHistory, deletePlaylistFromPlaylists, deleteVideoFromPlaylist};

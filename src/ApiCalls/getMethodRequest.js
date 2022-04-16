@@ -82,4 +82,18 @@ const getAllPlaylistArray = async(serviceListDispatch) => {
     }
 }
 
-export {getData, getCategoryData, getDataFromWatchLater, getDataFromLikedVideo, getVideoById, getDataFromHistory, getAllPlaylistArray}
+const getPlaylistFromPlaylists = async(playlistId, setPlaylistVideos, setLoader) => {
+    const token = localStorage.getItem("token");
+    try {
+        const response = await axios.get(`/api/user/playlists/${playlistId}`, {headers: {authorization: token}});
+        if(response.status === 200 || response.status === 201) {
+            setLoader(false);
+            console.log(response)
+            setPlaylistVideos(response?.data?.playlist)
+        }
+    }catch(error) {
+        console.error(error);
+    }
+}
+
+export {getData, getCategoryData, getDataFromWatchLater, getDataFromLikedVideo, getVideoById, getDataFromHistory, getAllPlaylistArray, getPlaylistFromPlaylists}
