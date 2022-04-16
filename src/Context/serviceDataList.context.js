@@ -1,10 +1,12 @@
 import {createContext, useReducer, useContext, useEffect, useState} from "react";
 import { getDataFromWatchLater, getDataFromLikedVideo, getDataFromHistory, getAllPlaylistArray } from "../ApiCalls";
+import { findItemInArray } from "../Helper";
 
 const ServiceDataListContext = createContext(); 
 
 const ServiceDataListProvider = ({children}) => {
     const [showPlaylistModal, setShowPlaylistModal] = useState(false);
+    const [clickedPlaylistVideo, setClickedPlaylistVideo] = useState({});
 
     const serviceListReducer = (state, action) => {
         switch(action.type) {
@@ -31,6 +33,12 @@ const ServiceDataListProvider = ({children}) => {
                     ...state,
                     allPlaylistArray : action.payload                    
                 }
+
+            case "SET_VIDEO_IN_PLAYLIST":
+                return {
+                    ...state,
+                    allPlaylistArray: state.allPlaylistArray.map(playlist => playlist._id === action.payload._id ? action.payload : playlist)
+                }
         } 
     }
 
@@ -42,7 +50,7 @@ const ServiceDataListProvider = ({children}) => {
     }, [])
 
     const [state, dispatch] = useReducer(serviceListReducer, {watchLaterList: [], likedVideoList: [], historyVideoList: [], allPlaylistArray: []})
-
+    
 
     return (
         <ServiceDataListContext.Provider value={{
@@ -52,7 +60,9 @@ const ServiceDataListProvider = ({children}) => {
             likedVideoList: state.likedVideoList, 
             historyVideoList: state.historyVideoList,
             allPlaylistArray: state.allPlaylistArray,
-            serviceListDispatch: dispatch, 
+            serviceListDispatch: dispatch,
+            clickedPlaylistVideo,
+            setClickedPlaylistVideo 
             }}>
             {children}
         </ServiceDataListContext.Provider>
