@@ -88,7 +88,6 @@ const getPlaylistFromPlaylists = async(playlistId, setPlaylistVideos, setLoader)
         const response = await axios.get(`/api/user/playlists/${playlistId}`, {headers: {authorization: token}});
         if(response.status === 200 || response.status === 201) {
             setLoader(false);
-            console.log(response)
             setPlaylistVideos(response?.data?.playlist)
         }
     }catch(error) {

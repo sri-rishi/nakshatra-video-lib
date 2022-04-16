@@ -12,10 +12,6 @@ export const SinglePlaylist = () => {
         getPlaylistFromPlaylists (playlistId, setPlaylistVideos, setLoader);
     }, [playlistId]);
 
-    if(playlistVideos) {
-        console.log(playlistVideos)
-    }
-
     if(loader) {
         return <h1>Loading ....</h1>
     }
