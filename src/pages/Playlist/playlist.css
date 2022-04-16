@@ -40,3 +40,10 @@
     color: var(--whitesmoke-color);
     font-size: 1.5rem;
 }
+
+.empty-playlist-cover {
+    color: var(--lighter-yellow-color);
+    background-color: var(--primary-dark-color);
+    font-size: 2rem;
+    height: 100%;
+}
