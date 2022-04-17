@@ -12,7 +12,7 @@ const signInHandler = async (userDetails, authDispatch, navigate, setToastData) 
       if(response.status === 201 || response.status === 200) {
         authDispatch({type: "LOGIN", payload: response.data.createdUser});
         setToastData({
-          toastText:"Successfully singed up",
+          toastText:"Successfully signed up",
           toastDisplay: true,
           toastType: "success"
         })
