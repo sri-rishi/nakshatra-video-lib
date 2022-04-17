@@ -2,3 +2,5 @@
 @import "../VideoCard/video-card.css";
 @import "../Sidebar/sidebar.css";
 @import "../PlaylistModal/playlistModal.css";
+@import "../Toast/toast.css";
+@import "../Loader/loader.css";

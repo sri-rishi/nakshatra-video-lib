@@ -1,24 +1,24 @@
 import { postVideoToLikedVideo,  postVideoToWatchLater, deleteVideoFromHistory, deleteVideoFromLikedVideo, deleteVideoFromWatchLater, postVideoToHistory} from "../ApiCalls";
 import { findItemInArray } from "./commonFunction";
 
-const addToWatchLater = (video, serviceListDispatch) => {
-    postVideoToWatchLater(video, serviceListDispatch);
+const addToWatchLater = (video, serviceListDispatch, setToastData) => {
+    postVideoToWatchLater(video, serviceListDispatch, setToastData);
 }
 
-const addToLikedVideos = (video, serviceListDispatch) => {
-    postVideoToLikedVideo(video, serviceListDispatch)
+const addToLikedVideos = (video, serviceListDispatch, setToastData) => {
+    postVideoToLikedVideo(video, serviceListDispatch, setToastData)
 }
 
-const removeFromWatchLater = (id, serviceListDispatch) => {
-    deleteVideoFromWatchLater(id, serviceListDispatch)
+const removeFromWatchLater = (id, serviceListDispatch, setToastData) => {
+    deleteVideoFromWatchLater(id, serviceListDispatch, setToastData)
 }
 
-const removeFromLikedVideo = (id, serviceListDispatch) => {
-    deleteVideoFromLikedVideo(id, serviceListDispatch);
+const removeFromLikedVideo = (id, serviceListDispatch, setToastData) => {
+    deleteVideoFromLikedVideo(id, serviceListDispatch, setToastData);
 }
 
-const historyHandler = (video, serviceListDispatch) => {
-    postVideoToHistory(video, serviceListDispatch)
+const historyHandler = (video, serviceListDispatch, setToastData) => {
+    postVideoToHistory(video, serviceListDispatch, setToastData)
 }
 
 const calculateView = (views) => {
@@ -31,16 +31,16 @@ const calculateView = (views) => {
     : Math.abs(Number(views));
 }
 
-const watchLaterHandler = (id, video, watchLaterList, serviceListDispatch) => {
-    findItemInArray(id, watchLaterList) ? removeFromWatchLater(id, serviceListDispatch) : addToWatchLater(video, serviceListDispatch)
+const watchLaterHandler = (id, video, watchLaterList, serviceListDispatch, setToastData) => {
+    findItemInArray(id, watchLaterList) ? removeFromWatchLater(id, serviceListDispatch, setToastData) : addToWatchLater(video, serviceListDispatch, setToastData)
 }
 
-const likedVideoHandler = (id, video, likedVideoList, serviceListDispatch) => {
-    findItemInArray(id, likedVideoList) ? removeFromLikedVideo(id, serviceListDispatch) : addToLikedVideos(video, serviceListDispatch);
+const likedVideoHandler = (id, video, likedVideoList, serviceListDispatch, setToastData) => {
+    findItemInArray(id, likedVideoList) ? removeFromLikedVideo(id, serviceListDispatch, setToastData) : addToLikedVideos(video, serviceListDispatch, setToastData);
 }
 
-const removeVideoFromHistory = (id, serviceListDispatch) => {
-    deleteVideoFromHistory(id, serviceListDispatch);
+const removeVideoFromHistory = (id, serviceListDispatch, setToastData) => {
+    deleteVideoFromHistory(id, serviceListDispatch, setToastData);
 }
 
 

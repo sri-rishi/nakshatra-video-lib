@@ -1,12 +1,13 @@
 import { Button } from "../index/index";
 import { AiOutlinePlus,VscClose } from "../../assets";
-import { useServiceData } from "../../Context";
+import { useServiceData, useToast } from "../../Context";
 import {useState} from "react";
 import { newPlaylistHandler , handlePlaylist} from "../../Helper";
 
 
 export const PlaylistModal = () => {
     const [showCreateNewModal, setShowCreateNewModal] = useState(false);
+    const {setToastData} = useToast();
     const [newPlaylistName, setNewPlaylistName] = useState("");
     const {showPlaylistModal, setShowPlaylistModal, serviceListDispatch, allPlaylistArray, clickedPlaylistVideo} = useServiceData();
 
@@ -40,7 +41,7 @@ export const PlaylistModal = () => {
                                     value={playlist.title} 
                                     type="checkbox" 
                                     checked={isChecked} 
-                                    onChange={() => handlePlaylist(playlist._id, clickedPlaylistVideo, serviceListDispatch, isChecked)}
+                                    onChange={() => handlePlaylist(playlist._id, clickedPlaylistVideo, serviceListDispatch, isChecked, setToastData)}
                                 />
                                 
                                 <label htmlFor={`${playlist.title}-playlist`} className="playlist-name-div"> {playlist.title}</label>
@@ -86,7 +87,7 @@ export const PlaylistModal = () => {
                     <Button 
                         className={"new-playlist-btn font-weight-5"} 
                         text="Save" 
-                        onClick={() => newPlaylistHandler(newPlaylistName, serviceListDispatch, allPlaylistArray, setShowCreateNewModal, setNewPlaylistName)}
+                        onClick={() => newPlaylistHandler(newPlaylistName, serviceListDispatch, allPlaylistArray, setShowCreateNewModal, setNewPlaylistName, setToastData)}
                     />
                 </div>
             </div>
