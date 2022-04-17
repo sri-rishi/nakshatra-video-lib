@@ -13,7 +13,7 @@ export const PlaylistModal = () => {
 
     const closeMainModal = () => {
         setShowPlaylistModal(false);
-        setNewPlaylistName(false);
+        setNewPlaylistName("");
     }
 
     return(
