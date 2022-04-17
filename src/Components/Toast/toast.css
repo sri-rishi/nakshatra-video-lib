@@ -1,0 +1,8 @@
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    transition: transform .6s ease-in-out;
+    animation: toast-in-right .7s;
+    gap: 1rem;
+}

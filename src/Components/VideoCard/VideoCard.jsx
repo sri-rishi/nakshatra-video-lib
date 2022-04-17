@@ -1,7 +1,7 @@
 import {useState} from "react";
 import { Button } from "../index";
 import { AiFillLike, BsThreeDotsVertical, MdOutlineWatchLater, MdPlaylistAdd, RiDeleteBin5Fill } from "../../assets";
-import { useServiceData } from "../../Context";
+import { useAuth, useServiceData, useToast } from "../../Context";
 import {watchLaterHandler, likedVideoHandler, removeVideoFromHistory, calculateView, findItemInArray, playlistModalHandler} from "../../Helper";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { deleteVideoFromPlaylist } from "../../ApiCalls";
@@ -9,6 +9,8 @@ import { deleteVideoFromPlaylist } from "../../ApiCalls";
 
 export const VideoCard = (props) => {
     const [showCtaBox, setShowCtaBox] = useState(false);
+    const {isUserLoggedIn} = useAuth();
+    const {setToastData} = useToast();
     const {watchLaterList, serviceListDispatch, likedVideoList, historyVideoList, setShowPlaylistModal, setClickedPlaylistVideo, clickedPlaylistVideo} = useServiceData();
     const {playlistId} = useParams();
     const location = useLocation();
@@ -25,8 +27,16 @@ export const VideoCard = (props) => {
 
     const playlistHandlerByPage = () => {
         return singlePlaylistPagePath ? 
-        deleteVideoFromPlaylist(playlistId, _id, serviceListDispatch) :
-        playlistModalHandler(props.videoDetails, setShowPlaylistModal, setClickedPlaylistVideo)
+        deleteVideoFromPlaylist(playlistId, _id, serviceListDispatch, setToastData) :
+        playlistModalHandler(props.videoDetails, setShowPlaylistModal, setClickedPlaylistVideo, setToastData)
+    }
+
+    const showLoginRequest = () => {
+        setToastData({
+            toastText: "Kindly login first",
+            toastDisplay: true,
+            toastType: "warn"
+        })
     }
 
     return (
@@ -43,10 +53,10 @@ export const VideoCard = (props) => {
                 <ul className={`video-card-cta-box ${!showCtaBox ? "display-none": "flex-column"}`}>
                     <li className="video-cta-list-item cursor-pointer">
                         <Button 
-                            className={"btn-border-none bg-transparent flex-row align-center gap-8-px font-weight-6 thumbnail-cta-btn"} 
-                            icon={<MdOutlineWatchLater className="icon-vr-align cta-icon"/>} 
+                            className={`btn-border-none bg-transparent flex-row align-center gap-8-px font-weight-6 thumbnail-cta-btn ${findItemInArray(_id, watchLaterList) && "color-red"}`} 
+                            icon={ findItemInArray(_id, watchLaterList) ? <RiDeleteBin5Fill className="icon-vr-align cta-icon mb-4-px"/>  :<MdOutlineWatchLater className="icon-vr-align cta-icon"/>} 
                             text={findItemInArray(_id, watchLaterList) ? "Remove from Watch Later" : "Add to Watch Later"}
-                            onClick={() => watchLaterHandler(_id, props.videoDetails, watchLaterList, serviceListDispatch)}
+                            onClick={() => !isUserLoggedIn ? showLoginRequest() : watchLaterHandler(_id, props.videoDetails, watchLaterList, serviceListDispatch, setToastData)}
                         />
                     </li>
                     <li className="video-cta-list-item cursor-pointer">
@@ -54,7 +64,7 @@ export const VideoCard = (props) => {
                             className={`btn-border-none bg-transparent flex-row align-center gap-8-px font-weight-6 thumbnail-cta-btn ${singlePlaylistPagePath && "color-red"}`} 
                             icon={singlePlaylistPagePath ? <RiDeleteBin5Fill className="icon-vr-align cta-icon mb-4-px"/> :<MdPlaylistAdd className="icon-vr-align cta-icon"/>} 
                             text={singlePlaylistPagePath ? "Remove From Playlist": "Add to playlist"}
-                            onClick={() => playlistHandlerByPage()}
+                            onClick={() => !isUserLoggedIn ? showLoginRequest() : playlistHandlerByPage()}
                         />
                     </li>
                     {
@@ -65,7 +75,7 @@ export const VideoCard = (props) => {
                                 className={"btn-border-none bg-transparent flex-row align-center gap-8-px font-weight-6 color-red"} 
                                 icon={<RiDeleteBin5Fill className="icon-vr-align mb-4-px cta-icon"/>}
                                 text="Remove from history" 
-                                onClick={() => removeVideoFromHistory(_id, serviceListDispatch)}
+                                onClick={() => removeVideoFromHistory(_id, serviceListDispatch, setToastData)}
                             />
                         </li>
                         : ""
@@ -83,7 +93,7 @@ export const VideoCard = (props) => {
                     <Button 
                         className={`${findItemInArray(_id, likedVideoList) && `color-dark-primary `} btn-border-none bg-transparent like-btn`} 
                         icon={<AiFillLike className="icon-vr-align"/>} 
-                        onClick={() => likedVideoHandler(_id, props.videoDetails, likedVideoList, serviceListDispatch)}
+                        onClick={() => !isUserLoggedIn ? showLoginRequest() :  likedVideoHandler(_id, props.videoDetails, likedVideoList, serviceListDispatch, setToastData)}
                     />
                 </div>
             </div>
