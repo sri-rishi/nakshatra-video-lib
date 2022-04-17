@@ -5,4 +5,5 @@
     transition: transform .6s ease-in-out;
     animation: toast-in-right .7s;
     gap: 1rem;
+    z-index: 99999;
 }

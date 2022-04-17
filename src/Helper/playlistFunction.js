@@ -1,6 +1,6 @@
 import { postPlaylist, deletePlaylistFromPlaylists, postVideoInPlaylist, deleteVideoFromPlaylist } from "../ApiCalls";
 
-const newPlaylistHandler = (newPlaylistName, serviceListDispatch, allPlaylistArray, setShowCreateNewModal, setNewPlaylistName) => {
+const newPlaylistHandler = (newPlaylistName, serviceListDispatch, allPlaylistArray, setShowCreateNewModal, setNewPlaylistName, setToastData) => {
     const title = allPlaylistArray && allPlaylistArray.some(playlistObj => playlistObj.title === newPlaylistName)
     setShowCreateNewModal(false)
     if(!title) {
