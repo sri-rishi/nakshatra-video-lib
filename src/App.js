@@ -1,5 +1,6 @@
 import "./App.css";
-import { Toast } from "./Components/index";
+import { Suspense } from "react";
+import { Toast, Loader } from "./Components/index";
 import {AllRoutes} from "./Routes";
 
 function App() {

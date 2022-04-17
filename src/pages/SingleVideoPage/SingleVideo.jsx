@@ -2,7 +2,7 @@ import {useParams } from "react-router-dom"
 import YouTube from "react-youtube"
 import { useEffect, useState } from "react";
 import { getVideoById} from "../../ApiCalls";
-import {Button} from "../../Components/index";
+import {Button, Loader} from "../../Components/index";
 import { historyHandler , addToLikedVideos, removeFromLikedVideo, findItemInArray, watchLaterHandler, calculateView, playlistModalHandler} from "../../Helper";
 import {AiOutlineDislike, AiOutlineLike, MdOutlineWatchLater, MdPlaylistAdd } from "../../assets";
 import { useServiceData } from "../../Context";
@@ -18,7 +18,7 @@ export const SingleVideo = () => {
     }, [videoId]);
 
     if(loading) {
-        return <h1>Loading ......</h1>
+        return <Loader />
     }
 
     return(

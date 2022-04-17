@@ -1,5 +1,18 @@
 import { Route, Routes } from "react-router-dom";
-import {HistoryPage, Home, LikedVideos, Login, Playlist, PrivateRoute, SignUp, SinglePlaylist, SingleVideo, UserProfile, WatchLater} from "../pages/index";
+import {
+    HistoryPage, 
+    Home, 
+    LikedVideos,
+    Login, 
+    Playlist, 
+    PrivateRoute, 
+    SignUp, 
+    SinglePlaylist, 
+    SingleVideo, 
+    UserProfile, 
+    WatchLater
+} from "../pages/index";
+
 import { TemplateRoute } from "./TemplateRoute";
 
 export const AllRoutes = () => {

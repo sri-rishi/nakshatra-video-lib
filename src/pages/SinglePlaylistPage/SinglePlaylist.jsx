@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { EmptyPage, VideoCard } from "../../Components/index";
+import { EmptyPage, Loader, VideoCard } from "../../Components/index";
 import { getPlaylistFromPlaylists } from "../../ApiCalls";
 
 export const SinglePlaylist = () => {
@@ -13,7 +13,7 @@ export const SinglePlaylist = () => {
     }, [playlistVideos]);
 
     if(loader) {
-        return <h1>Loading ....</h1>
+        return <Loader />
     }
 
     return (

@@ -1,0 +1,48 @@
+.loader1{
+	border-radius: 50%;
+	border-top: 20px solid var(----lighter-yellow-color);
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	border-bottom: 20px solid var(----lighter-yellow-color);
+	animation-name: rotatepos;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+}
+.inside1{
+	display: flex;
+	place-items: center;
+	justify-content: center;
+	width: 110px;
+	height: 110px;
+	border-radius: 50%;
+	border-left: 20px solid var(----lighter-yellow-color);
+	border-top: 20px solid transparent;
+	border-bottom: 20px solid transparent;
+	border-right: 20px solid var(----lighter-yellow-color);
+	animation-name: buruh;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+}
+.loader1{
+	height: 150px;
+	width: 150px;
+}
+.inside1 span{
+	animation-name: rotatepos;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+	font-family: monospace;
+	color: var(----lighter-yellow-color);
+}
+@keyframes rotatepos{
+	0%{}
+	50%{transform: rotate(360deg)}
+}
+@keyframes buruh{
+	0%{}
+	50%{transform: rotate(-720deg);}
+}
+@keyframes stuff2{
+	0%{}
+	50%{transform: rotate(720deg);}
+}

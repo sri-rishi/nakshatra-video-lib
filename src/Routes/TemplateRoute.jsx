@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Navbar, Sidebar, PlaylistModal } from "../Components/index";
+import { Navbar, Sidebar, PlaylistModal} from "../Components/index";
 
 export const TemplateRoute = () => {
     return (
