@@ -35,6 +35,22 @@ const loginHandler = async (userInput, authDispatch, navigate) => {
     }
 }; 
 
+const postTestLoginUser = async(authDispatch, navigate) => {
+  try {
+    const response = await axios.post("/api/auth/login", {
+      email: "adminforever@gmail.com",
+      password: "admin123"
+    })
+    if(response.status === 200 || response.status === 201) {
+      authDispatch({type: "LOGIN", payload: response.data.foundUser})
+    }
+    localStorage.setItem("token", response.data.encodedToken);
+    navigate("/")
+  }catch(error) {
+    console.error(error)
+  }
+}
+
 const postVideoToWatchLater = async(video, serviceListDispatch) => {
   const token = localStorage.getItem("token"); 
   try {
@@ -71,5 +87,31 @@ const postVideoToHistory = async(video, serviceListDispatch) => {
   }
 }
 
-export {loginHandler, signInHandler, postVideoToWatchLater, postVideoToLikedVideo, postVideoToHistory};
+
+const postPlaylist = async(newPlaylistName, serviceListDispatch) => {
+  const token = localStorage.getItem("token");
+  try {
+      const response = await axios.post("/api/user/playlists", {playlist: {title: newPlaylistName}}, {headers: {authorization: token}})
+      if(response.status === 200 || response.status === 201) {
+          serviceListDispatch({type: "SET_ALL_PLAYLIST_ARRAY", payload: response.data.playlists})
+      }
+  }catch(error) {
+      console.log(error)
+  }
+}
+
+const postVideoInPlaylist = async(playlistId, video, serviceListDispatch) => {
+  const token = localStorage.getItem("token");
+  try {
+      const response = await axios.post(`/api/user/playlists/${playlistId}`, {video}, {headers: {authorization: token}});
+      if(response.status === 200 || response.status === 201) {
+        serviceListDispatch({type: "SET_VIDEO_IN_PLAYLIST", payload: response.data.playlist});
+      }
+      
+  }catch(error) {
+      console.error(error)
+  }
+}
+
+export {loginHandler, signInHandler, postVideoToWatchLater, postVideoToLikedVideo, postVideoToHistory, postPlaylist, postVideoInPlaylist, postTestLoginUser};
 

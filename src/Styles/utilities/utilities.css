@@ -118,7 +118,7 @@
 }
 
 .empty-box-image {
-    width: 50%;
+    width: 60%;
 }
 
 .text-ellipsis-overflow{
@@ -126,4 +126,12 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+@media only screen and (max-width: 47em){
+    .body-template {
+        grid-template-areas: 
+         "navbar navbar navbar"
+         "main main main";
+    }
 }

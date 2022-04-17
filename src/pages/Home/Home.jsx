@@ -1,4 +1,4 @@
-import { Navbar, Sidebar, VideoCard } from "../../Components/index"
+import { Navbar, Sidebar, VideoCard, PlaylistModal} from "../../Components/index"
 import { useFilter } from "../../Context";
 import { TabButtonChips } from "./tabsButtonChips";
 
@@ -8,6 +8,7 @@ export const Home = () => {
         <div className="body-template">
             <Navbar />
             <Sidebar />
+            <PlaylistModal />
             <main className="main-box flex-column gap-2">
                 <TabButtonChips />
                 <div className="videoCard-box flex-row align-center justify-evenly gap-2">

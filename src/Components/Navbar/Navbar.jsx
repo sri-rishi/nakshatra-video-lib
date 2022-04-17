@@ -25,7 +25,7 @@ export const Navbar = () => {
                         <NavLink to="/user/user-profile">
                             <Button 
                                 text={isUserLoggedIn ? user.firstName : "Login"} 
-                                className={`btn ${isUserLoggedIn ? "card-shadow primary-color-text font-weight-5" : "btn-primary"} md-screen-hidden`} 
+                                className={`btn ${isUserLoggedIn ? "card-shadow primary-color-text font-weight-5" : "btn-primary"}`} 
                             />
                         </NavLink>
                     }

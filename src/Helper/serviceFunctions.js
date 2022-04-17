@@ -1,5 +1,5 @@
 import { postVideoToLikedVideo,  postVideoToWatchLater, deleteVideoFromHistory, deleteVideoFromLikedVideo, deleteVideoFromWatchLater, postVideoToHistory} from "../ApiCalls";
-import { findItemInArray } from "./commonFuction";
+import { findItemInArray } from "./commonFunction";
 
 const addToWatchLater = (video, serviceListDispatch) => {
     postVideoToWatchLater(video, serviceListDispatch);

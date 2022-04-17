@@ -1,16 +1,16 @@
-import { useParams } from "react-router-dom"
+import {useParams } from "react-router-dom"
 import YouTube from "react-youtube"
 import { useEffect, useState } from "react";
 import { getVideoById} from "../../ApiCalls";
-import {Button, Navbar, Sidebar} from "../../Components/index";
-import { historyHandler , addToLikedVideos, removeFromLikedVideo, findItemInArray, watchLaterHandler, calculateView} from "../../Helper";
+import {Button, Navbar, PlaylistModal, Sidebar} from "../../Components/index";
+import { historyHandler , addToLikedVideos, removeFromLikedVideo, findItemInArray, watchLaterHandler, calculateView, playlistModalHandler} from "../../Helper";
 import {AiOutlineDislike, AiOutlineLike, MdOutlineWatchLater, MdPlaylistAdd } from "../../assets";
 import { useServiceData } from "../../Context";
 
 export const SingleVideo = () => {
     const [video, setVideo] = useState();
     const {videoId} =  useParams();
-    const {serviceListDispatch, likedVideoList, watchLaterList} = useServiceData()
+    const {serviceListDispatch, likedVideoList, watchLaterList, setShowPlaylistModal, setClickedPlaylistVideo} = useServiceData()
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -25,6 +25,7 @@ export const SingleVideo = () => {
         <div className="body-template">
             <Navbar />
             <Sidebar />
+            <PlaylistModal />
             <main className="main-box flex-column">
                 <div className="video-box flex-column gap-2">
                     <div className="single-video-box">
@@ -66,6 +67,7 @@ export const SingleVideo = () => {
                                     className={`btn-border-none bg-transparent video-cta-btn`} 
                                     icon={<MdPlaylistAdd className="icon-vr-align mr-8-px icon-size"/>} 
                                     text={`Add to playlist`} 
+                                    onClick={() => playlistModalHandler(video, setShowPlaylistModal, setClickedPlaylistVideo)}
                                 />
                             </div>
                         </div>

@@ -1,16 +1,18 @@
 import {useState} from "react";
 import { Button } from "../index";
 import { AiFillLike, BsThreeDotsVertical, MdOutlineWatchLater, MdPlaylistAdd, RiDeleteBin5Fill } from "../../assets";
-import { findItemInArray } from "../../Helper";
 import { useServiceData } from "../../Context";
-import {watchLaterHandler, likedVideoHandler, removeVideoFromHistory,  calculateView} from "../../Helper";
-import { Link, useLocation } from "react-router-dom";
+import {watchLaterHandler, likedVideoHandler, removeVideoFromHistory, calculateView, findItemInArray, playlistModalHandler} from "../../Helper";
+import { Link, useLocation, useParams } from "react-router-dom";
+import { deleteVideoFromPlaylist } from "../../ApiCalls";
 
 
 export const VideoCard = (props) => {
     const [showCtaBox, setShowCtaBox] = useState(false);
-    const {watchLaterList, serviceListDispatch, likedVideoList, historyVideoList} = useServiceData();
+    const {watchLaterList, serviceListDispatch, likedVideoList, historyVideoList, setShowPlaylistModal, setClickedPlaylistVideo, clickedPlaylistVideo} = useServiceData();
+    const {playlistId} = useParams();
     const location = useLocation();
+    const singlePlaylistPagePath = location.pathname === `/user/playlists/${playlistId}`;
 
     const {
         _id,
@@ -20,6 +22,12 @@ export const VideoCard = (props) => {
         views,
         postedBefore
     } = props.videoDetails;
+
+    const playlistHandlerByPage = () => {
+        return singlePlaylistPagePath ? 
+        deleteVideoFromPlaylist(playlistId, _id, serviceListDispatch) :
+        playlistModalHandler(props.videoDetails, setShowPlaylistModal, setClickedPlaylistVideo)
+    }
 
     return (
         <div className="video-card">
@@ -36,16 +44,17 @@ export const VideoCard = (props) => {
                     <li className="video-cta-list-item cursor-pointer">
                         <Button 
                             className={"btn-border-none bg-transparent flex-row align-center gap-8-px font-weight-6 thumbnail-cta-btn"} 
-                            icon={<MdOutlineWatchLater className="icon-vr-align mb-3-px cta-icon"/>} 
+                            icon={<MdOutlineWatchLater className="icon-vr-align cta-icon"/>} 
                             text={findItemInArray(_id, watchLaterList) ? "Remove from Watch Later" : "Add to Watch Later"}
                             onClick={() => watchLaterHandler(_id, props.videoDetails, watchLaterList, serviceListDispatch)}
                         />
                     </li>
                     <li className="video-cta-list-item cursor-pointer">
                         <Button 
-                            className={"btn-border-none bg-transparent flex-row align-center gap-8-px font-weight-6 thumbnail-cta-btn"} 
-                            icon={<MdPlaylistAdd className="icon-vr-align mb-3-px cta-icon"/>} 
-                            text="Add to Playlist"
+                            className={`btn-border-none bg-transparent flex-row align-center gap-8-px font-weight-6 thumbnail-cta-btn ${singlePlaylistPagePath && "color-red"}`} 
+                            icon={singlePlaylistPagePath ? <RiDeleteBin5Fill className="icon-vr-align cta-icon mb-4-px"/> :<MdPlaylistAdd className="icon-vr-align cta-icon"/>} 
+                            text={singlePlaylistPagePath ? "Remove From Playlist": "Add to playlist"}
+                            onClick={() => playlistHandlerByPage()}
                         />
                     </li>
                     {
@@ -54,7 +63,7 @@ export const VideoCard = (props) => {
                         <li className="video-cta-list-item cursor-pointer">
                             <Button 
                                 className={"btn-border-none bg-transparent flex-row align-center gap-8-px font-weight-6 color-red"} 
-                                icon={<RiDeleteBin5Fill className="icon-vr-align mb-3-px cta-icon"/>}
+                                icon={<RiDeleteBin5Fill className="icon-vr-align mb-4-px cta-icon"/>}
                                 text="Remove from history" 
                                 onClick={() => removeVideoFromHistory(_id, serviceListDispatch)}
                             />

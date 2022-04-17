@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState} from "react";
-import { loginHandler } from "../../../ApiCalls";
+import { loginHandler, postTestLoginUser } from "../../../ApiCalls";
 import { useAuth } from "../../../Context";
 import { Button } from "../../../Components/index";
 
@@ -15,6 +15,11 @@ export const Login = () => {
     const signinHandler = (e) => {
         e.preventDefault();
         loginHandler(userInput, authDispatch, navigate);
+    }
+
+    const testLoginHandler = (e) => {
+        e.preventDefault();
+        postTestLoginUser(authDispatch, navigate);
     }
 
     const disableLoginButton = () => {
@@ -58,7 +63,7 @@ export const Login = () => {
                 </div>
             
                 <Button className="form-cta btn btn-primary" onClick={(e) => signinHandler(e)} text="Login" disabled={!disableLoginButton()}/>
-            
+                <Button className="form-cta btn bg-primary-dark" onClick={(e) => testLoginHandler(e)} text="Login As Guest"/>
                 <Link to="/signup">
                     <Button className="form-cta btn btn-outline-primary" text="Create New Account" />
                 </Link>
