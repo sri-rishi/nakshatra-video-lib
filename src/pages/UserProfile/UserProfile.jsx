@@ -6,9 +6,8 @@ export const UserProfile = () => {
     const {user, authDispatch} = useAuth();
 
     return (
-        <>
-            <Navbar />
-            <div className="userProfile-main flex-row align-center justify-center">
+        <div>
+            <main className="userProfile-main flex-row align-center justify-center">
                 <div className="profile-service-card flex-column justify-center align-center gap-3 card-shadow">
                     <h3 className="sm-heading font-weight-4">Account</h3>
                     <div className="profile-details grid grid-30-70-layout">
@@ -42,7 +41,7 @@ export const UserProfile = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-        </>
+            </main>
+        </div>
     )
 }
