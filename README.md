@@ -1,6 +1,6 @@
 # cliqTube
 
-Hi folks cliqtube is video library based on photograpy and videos, to check visit link
+Hi folks cliqtube is video library based on photography and videos, to check visit link
 
 https://cliq-tube.netlify.app/
 
